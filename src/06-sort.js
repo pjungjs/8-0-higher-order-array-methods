@@ -26,16 +26,21 @@ function sortByRuntimeAscending(songs) {
  * @returns {Object[]}
  */
 function sortByArtistNameDescending(songs) {
-  songs.sort((a, b) => {
+  return songs.sort((a, b) => {
     const artistA = a.artist.toLowerCase();
     const artistB = b.artist.toLowerCase();
-    if (artistA < artistB) {
-      return -1;
-    } else if (artistA > artistB) {
-      return 1;
-    }
+    return artistA < artistB ? -1 : artistA > artistB ? 1 : 0;
   }).reverse();
-  return songs;
+  // songs.sort((a, b) => {
+  //   const artistA = a.artist.toLowerCase();
+  //   const artistB = b.artist.toLowerCase();
+  //   if (artistA < artistB) {
+  //     return -1;
+  //   } else if (artistA > artistB) {
+  //     return 1;
+  //   }
+  // }).reverse();
+  // return songs;
 }
 
 /**
@@ -47,17 +52,16 @@ function sortByArtistNameDescending(songs) {
  * @returns {Object[]}
  */
 function sortBySongTitleAscending(songs) {
-  // not sure why this doesn't work:
-  // return songs.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? -1 : a.title.toLowerCase() < b.title.toLowerCase() ? 1 : 0)
-  return songs.sort((a, b) => {
-    const titleA = a.title.toLowerCase();
-    const titleB = b.title.toLowerCase();
-    if (titleA < titleB) {
-      return -1;
-    } else if (titleA > titleB) {
-      return 1;
-    }
-  });
+  return songs.sort((a, b) => a.title.toLowerCase() < b.title.toLowerCase() ? -1 : a.title.toLowerCase() > b.title.toLowerCase() ? 1 : 0);
+  // return songs.sort((a, b) => {
+  //   const titleA = a.title.toLowerCase();
+  //   const titleB = b.title.toLowerCase();
+  //   if (titleA < titleB) {
+  //     return -1;
+  //   } else if (titleA > titleB) {
+  //     return 1;
+  //   }
+  // });
 }
 
 module.exports = {
